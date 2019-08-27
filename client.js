@@ -31,6 +31,55 @@ const employees = [
   }
 ];
 
+
+
+function bonusCalculator(employee) {
+  let bonus = 0;
+  if (employee.reviewRating <= 2) {
+    bonus = 0;
+  } else if (employee.reviewRating == 3) {
+    bonus = 0.04;
+  } else if (employee.reviewRating == 4) {
+    bonus = 0.06;
+  } else if (employee.reviewRating == 5) {
+    bonus = 0.1;
+  } //end if statement about rating
+  if (employee.employeeNumber.length == 4) {
+    bonus = bonus + (0.05);
+  }// employee number conditional
+  if (employee.annualSalary > 65000) {
+    bonus = bonus - 0.01;
+  } // employee salary conditional
+  if (bonus > 0.13) {
+    bonus = 0.13;
+  } //end max bonus
+  if (bonus < 0) {
+    bonus = 0;
+  } //end min bonus
+
+  let totalBonus = bonus * employee.annualSalary;
+
+  return {
+    name: employee.name,
+    bonusPercentage: bonus,
+    totalCompensation: parseInt(employee.annualSalary) + totalBonus,
+    totalBonus: Math.round(totalBonus)
+  }
+}// bonusCalculator end
+
+
+for ( let i = 0; i < employees.length; i++ ){
+  console.log(bonusCalculator(employees[i]));
+}
+
+
+
+
+
+
+
+
+
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
