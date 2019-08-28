@@ -1,3 +1,6 @@
+$(document).ready(readyNow);
+function readyNow() {
+
 const employees = [
   {
     name: 'Atticus',
@@ -67,15 +70,16 @@ function bonusCalculator(employee) {
   }
 }// bonusCalculator end
 
-
+let bonuses = [];
 for ( let i = 0; i < employees.length; i++ ){
-  console.log(bonusCalculator(employees[i]));
+  bonuses.push(bonusCalculator(employees[i]));
 }
+console.log(bonuses)
 
-
-
-
-
+for (let i = 0; i < bonuses.length; i++) {
+  let listing = bonuses[i].name + " receives a " + (100 * bonuses[i].bonusPercentage) + "% bonus, for a total of $" + bonuses[i].totalBonus + " on top of their salary.";
+  $("#bonusList").append("<li>" + listing + "</li>");
+}//end for loop
 
 
 
@@ -90,3 +94,4 @@ for ( let i = 0; i < employees.length; i++ ){
 // Ask questions when you don't.
 
 console.log( employees );
+}//end ready now
